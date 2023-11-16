@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="fernanda burrinha "/>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld :users="users" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  data() {
+    return {
+      users: [],
+    };
+  },
+  mounted() {
+    // Faz a solicitação AJAX para obter os usuários do servidor Rails
+    this.fetchUsers();
+  },
+  methods: {
+    fetchUsers() {
+      // Substitua a URL com o caminho para o endpoint do Rails que retorna os usuários
+      fetch('http://localhost:8080/users') // Certifique-se de ajustar a porta se necessário
+        .then(response => response.json())
+        .then(data => {
+          this.users = data;
+        })
+        .catch(error => {
+          console.error('Erro ao obter usuários:', error);
+        });
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+img {
+  height: 200px;
 }
 </style>
