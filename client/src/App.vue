@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld :users="users" />
+    <nav-bar></nav-bar>
+    <div class="app" >
+      <img alt="Vue logo" src="./assets/logo.png">
+      <HelloWorld :users="users" />
+    </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
+    'nav-bar': NavBar,
   },
   data() {
     return {
@@ -41,5 +46,9 @@ export default {
 <style>
 img {
   height: 200px;
+}
+
+.app {
+display: flex;
 }
 </style>

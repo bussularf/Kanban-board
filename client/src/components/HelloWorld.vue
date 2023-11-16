@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hello</h1>
+    <h1>Kanban Board</h1>
     <ul>
       <li v-for="user in users" :key="user.id">{{ user.email }}</li>
     </ul>
