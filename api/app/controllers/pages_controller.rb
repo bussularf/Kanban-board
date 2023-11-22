@@ -1,13 +1,5 @@
 class PagesController < ApplicationController
-  def index
-    @users = User.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @users }
-    end
-  end
+  skip_before_action :authenticate_user!, only: [:home, :users]
 
-  def users
-    render json: User.all
-  end
+  def home;end
 end
